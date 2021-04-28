@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Curso AngularJs</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
+    integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-route/angular-route.min.js"></script>
+
+    <link rel="shortcut icon" href="assets/favicon.ico">
+    <script>
+        angular.module("app", []);
+        angular.module("app").controller("appController", function(){
+            vm = this;
+            vm.ola = "Curso de AngularJS"
+            vm.teste = "teste"
+            console.log(this.ola)
+        })
+    </script>
+</head>
+
+
+<body ng-app="app">
+    <div ng-controller="appController as vm">
+        <h1>{{vm.ola}}</h1>
+    <form>
+        <div class="form-group">
+          <label for="teste">Nosso Teste</label>
+          <input type="text" class="form-control" ng-model="vm.teste" id="teste">
+        </div>
+
+        <h1>{{vm.teste}}</h1>
+      </form>
+    </div>
+</body>
+</html>
