@@ -1,41 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>Curso AngularJs</title>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
     integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="node_modules/angular-route/angular-route.min.js"></script>
+    
+    <script src="curso-app.js"></script>
+    <script src="curso-service.js"></script>
+    <script src="curso-router.js"></script>
+    
+    
+    <script src="cadastro/cadastro-controller.js"></script>
+    <script src="home/home-controller.js"></script>
 
     <link rel="shortcut icon" href="assets/favicon.ico">
+    
+</head>   
+<body>
+
     <script>
-        angular.module("app", []);
-        angular.module("app").controller("appController", function(){
+        angular.module('app').controller('MenuController', MenuController);
+        MenuController.$inject = ['$location'];
+        function MenuController($location){
             vm = this;
-            vm.ola = "Curso de AngularJS"
-            vm.teste = "teste"
-            console.log(this.ola)
-        })
+            vm.itensMenu = [
+                {titulo: 'Home', class: 'nav-link active'},
+                {titulo: 'Cadastro', class: 'nav-link'}
+            ]
+
+            vm.navegar = function(rota,array){
+                angular.forEach(array, function(item){
+                    if(item.titulo == rota){
+                        item.class = 'nav-link active'
+                    }else{
+                        item.class = 'nav-link'
+                    }
+                })
+                $location.path(rota)
+            }
+        }
     </script>
-</head>
 
+    <div class="container-fluid">
 
-<body ng-app="app">
-    <div ng-controller="appController as vm">
-        <h1>{{vm.ola}}</h1>
-    <form>
-        <div class="form-group">
-          <label for="teste">Nosso Teste</label>
-          <input type="text" class="form-control" ng-model="vm.teste" id="teste">
-        </div>
+<div ng-controller="MenuController as vm">
+<ul class="nav nav-tabs">
+    <li class="nav-item" ng-repeat="item in vm.itensMenu">
+          <a ng-class=""item.class" class="nav-link active" ng-click="vm.navegar(item.titulo, vm.itensMenu)">{{item.titulo}}</a>
+        </li>
+    </li>
+</ul>
+</div>
 
-        <h1>{{vm.teste}}</h1>
-      </form>
-    </div>
+    <div ng-view></div>      
+    
+</div>
 </body>
+
 </html>

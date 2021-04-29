@@ -1,0 +1,27 @@
+<div class="container-fluid" ng-init="vm.init()">
+<h1>{{vm.teste}}</h1>
+
+<div class="alert alert-danger" role="alert" ng-if="vm.erro">
+A conexão com o banco de dados falhou!
+</div>
+<table class="table" ng-if="vm.clientes">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nome</th>
+        <th scope="col">RG</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Excluir</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="cliente in vm.clientes | orderBy : 'nome'">
+        <th scope="row">{{cliente.id}}</th>
+        <td>{{cliente.nome}}</td>
+        <td>{{cliente.rg}}</td>
+        <td><button type="button" class="btn btn-warning" ng-click="vm.editar(cliente.id)">Editar</button></td>
+        <td><button type="button" class="btn btn-dark" ng-click="vm.excluir(cliente.id)">Excluir</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

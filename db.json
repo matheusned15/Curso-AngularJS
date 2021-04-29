@@ -1,0 +1,32 @@
+{
+  "clientes": [
+    {
+      "id": 1,
+      "nome": "Ned",
+      "rg": "789456"
+    },
+    {
+      "id": 2,
+      "nome": "Leoff",
+      "rg": "789456"
+    },
+    {
+      "id": 3,
+      "nome": "Ana",
+      "rg": "789456"
+    },
+    {
+      "nome": "Matheus Ned De Souza Silveira",
+      "rg": "47",
+      "id": 6
+    },
+    {
+      "id": 7
+    },
+    {
+      "nome": "Leo",
+      "rg": "123123",
+      "id": 8
+    }
+  ]
+}
