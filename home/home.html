@@ -7,6 +7,9 @@
 <div class="alert alert-danger" role="alert" ng-if="vm.erro">
 A conexão com o banco de dados falhou!
 </div>
+
+<label for="exampleDataList" class="form-label">Filtro de pesquisa</label>
+<input class="form-control" list="datalistOptions"ng-model="vm.filtroPesquisa" id="exampleDataList" placeholder="filtrar...">
 <table class="table" ng-if="vm.clientes">
     <thead>
       <tr>
@@ -18,7 +21,7 @@ A conexão com o banco de dados falhou!
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="cliente in vm.clientes | orderBy : 'nome'">
+      <tr ng-repeat="cliente in vm.clientes | filter : vm.filtroPesquisa">
         <th scope="row">{{cliente.id}}</th>
         <td>{{cliente.nome}}</td>
         <td>{{cliente.rg}}</td>
