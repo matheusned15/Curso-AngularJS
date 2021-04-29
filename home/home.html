@@ -1,5 +1,8 @@
 <div class="container-fluid" ng-init="vm.init()">
-<h1>{{vm.teste}}</h1>
+    <div class="container">
+        <alertComponente msg="'A conexão com o banco de dados falhou!'" tipo="'erro'"></alertComponente>
+    </div>
+
 
 <div class="alert alert-danger" role="alert" ng-if="vm.erro">
 A conexão com o banco de dados falhou!
